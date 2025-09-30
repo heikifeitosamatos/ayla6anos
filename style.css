@@ -1,49 +1,179 @@
+/* Importação de fontes e configurações gerais */
+:root {
+    --cor-principal: #2a9d8f;
+    --cor-secundaria: #e9c46a;
+    --cor-destaque: #f4a261;
+    --cor-texto: #264653;
+    --cor-fundo: #fefae0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  text-align: center;
-  padding: 20px;
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden; /* Evita barra de rolagem por causa dos confetes */
 }
 
-.container {
-  background-color: #fff;
-  padding: 20px;
-  margin: auto;
-  width: 90%;
-  max-width: 600px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+/* Estilo do cartão principal */
+.card-convite {
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px 40px;
+    text-align: center;
+    border: 5px solid var(--cor-principal);
+    position: relative;
+    overflow: hidden;
 }
 
-label {
-  display: block;
-  margin-top: 10px;
-  font-weight: bold;
+header h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2.2em;
+    color: var(--cor-principal);
+    margin-bottom: 5px;
 }
 
-input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  box-sizing: border-box;
+header h2 {
+    font-size: 1.1em;
+    font-weight: 400;
+    margin-bottom: 15px;
 }
 
-button {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #0078d7;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.aniversariante span {
+    background-color: var(--cor-secundaria);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 1.5em;
+    font-weight: 700;
+    font-family: 'Baloo 2', cursive;
+    display: inline-block;
 }
 
-button:hover {
-  background-color: #005fa3;
+main .idade {
+    font-size: 1.8em;
+    color: var(--cor-destaque);
+    font-weight: 700;
+    margin-top: 25px;
+    font-family: 'Baloo 2', cursive;
 }
 
-canvas {
-  margin-top: 20px;
-  border: 1px solid #ccc;
-  background-color: #fff;
+main .mensagem {
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 15px 0 25px;
+}
+
+.detalhes {
+    margin-bottom: 25px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.info-item .icone {
+    font-size: 1.5em;
+}
+
+.info-item p {
+    font-size: 1.1em;
+}
+
+/* Contador Regressivo */
+.contador-regressivo {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.contador-regressivo h3 {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: var(--cor-texto);
+}
+
+#countdown {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tempo {
+    display: flex;
+    flex-direction: column;
+}
+
+.tempo span {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--cor-principal);
+    font-family: 'Baloo 2', cursive;
+}
+
+.tempo small {
+    font-size: 0.8em;
+    color: #6c757d;
+}
+
+/* Botão de Confirmação */
+.botao-confirmar {
+    display: inline-block;
+    background-color: var(--cor-destaque);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.botao-confirmar:hover {
+    transform: scale(1.05);
+    background-color: #e76f51;
+}
+
+footer {
+    margin-top: 20px;
+    font-weight: 600;
+    color: var(--cor-texto);
+}
+
+/* Animação de Confete */
+.confete {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    top: -20px;
+    opacity: 0.8;
+    animation: cair 4s linear infinite;
+}
+
+@keyframes cair {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(120vh) rotate(720deg);
+        opacity: 0;
+    }
 }
