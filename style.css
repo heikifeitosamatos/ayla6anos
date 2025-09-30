@@ -5,7 +5,7 @@
     --cor-destaque: #f4a261; /* Laranja bebê */
     --cor-texto: #264653;
     --cor-rosa-bebe: #FFB6C1;
-    --cor-amarelo-bebe: #FDFD96; /* Amarelo bebê adicionado */
+    --cor-amarelo-bebe: #FDFD96; 
 }
 
 * {
@@ -67,10 +67,9 @@ header h1 {
 
 main .idade {
     font-size: 1.8em;
-    /* 2. Cor da fonte para amarelo bebê */
-    color: var(--cor-amarelo-bebe);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* Sombra para legibilidade */
-    background-color: var(--cor-destaque);
+    /* 2. Fundo amarelo bebê e texto escuro */
+    color: var(--cor-texto); 
+    background-color: var(--cor-amarelo-bebe);
     padding: 5px 15px;
     border-radius: 15px;
     display: inline-block;
@@ -83,21 +82,18 @@ main .idade {
 main .mensagem {
     font-size: 1em;
     line-height: 1.6;
-    margin: 15px 0 25px;
+    /* 3. Espaçamento aumentado */
+    margin: 30px 0 35px;
 }
 
-/* 1. Fundo branco mais forte para os textos */
+/* Classe para textos com fundo branco */
 .texto-com-fundo {
-    background-color: rgba(255, 255, 255, 0.95); /* Fundo branco mais opaco */
+    background-color: rgba(255, 255, 255, 0.95); 
     padding: 3px 8px;
     border-radius: 5px;
     display: inline;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
-}
-
-h1.texto-com-fundo {
-    display: inline-block;
 }
 
 .detalhes {
@@ -118,9 +114,8 @@ h1.texto-com-fundo {
 
 /* Estilo para o botão de mapa */
 .botao-mapa {
-    /* 1. Fundo branco também no botão */
     background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0,0,0,0.1); /* Borda sutil para dar forma */
+    border: 1px solid rgba(0,0,0,0.1); 
     border-radius: 8px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     color: var(--cor-texto);
@@ -217,4 +212,4 @@ footer {
         transform: translateY(120vh) rotate(720deg);
         opacity: 0;
     }
-}
+    }
