@@ -4,7 +4,6 @@
     --cor-secundaria: #e9c46a;
     --cor-destaque: #f4a261;
     --cor-texto: #264653;
-    --cor-fundo: #fefae0;
 }
 
 * {
@@ -15,21 +14,28 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: var(--cor-fundo);
     color: var(--cor-texto);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    overflow-x: hidden; /* Evita barra de rolagem por causa dos confetes */
+    
+    /* Imagem de fundo adicionada aqui */
+    background-image: url('fundo.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Mantém o fundo fixo ao rolar a página */
+    
+    overflow-x: hidden;
 }
 
 /* Estilo do cartão principal */
 .card-convite {
-    background-color: white;
+    /* Fundo levemente translúcido para melhor leitura sobre a imagem */
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 500px;
     padding: 30px 40px;
@@ -43,12 +49,6 @@ header h1 {
     font-family: 'Baloo 2', cursive;
     font-size: 2.2em;
     color: var(--cor-principal);
-    margin-bottom: 5px;
-}
-
-header h2 {
-    font-size: 1.1em;
-    font-weight: 400;
     margin-bottom: 15px;
 }
 
@@ -95,6 +95,12 @@ main .mensagem {
 
 .info-item p {
     font-size: 1.1em;
+}
+
+/* Estilo para o link do mapa */
+.link-mapa {
+    text-decoration: none;
+    line-height: 1; /* Alinha o emoji verticalmente */
 }
 
 /* Contador Regressivo */
