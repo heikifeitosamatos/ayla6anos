@@ -32,7 +32,7 @@ body {
 
 /* Estilo do cartão principal */
 .card-convite {
-    background-color: rgba(255, 255, 255, 0.75); /* Transparência do fundo branco */
+    background-color: rgba(255, 255, 255, 0.75);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 100%;
@@ -66,11 +66,12 @@ header h1 {
 
 main .idade {
     font-size: 1.8em;
-    color: white; /* Cor da fonte para branco */
-    background-color: var(--cor-destaque); /* Fundo da cor atual dele (laranja bebê) */
+    /* 1. Fundo laranja e fonte branca */
+    color: white;
+    background-color: var(--cor-destaque);
     padding: 5px 15px;
     border-radius: 15px;
-    display: inline-block; /* Para o fundo cobrir apenas o texto */
+    display: inline-block;
     font-weight: 700;
     margin-top: 25px;
     font-family: 'Baloo 2', cursive;
@@ -83,21 +84,19 @@ main .mensagem {
     margin: 15px 0 25px;
 }
 
-/* Estilo para textos com fundo branco */
-.texto-fundo-branco {
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco levemente transparente */
-    padding: 3px 8px; /* Pequeno padding para o fundo */
-    border-radius: 5px; /* Bordas arredondadas */
-    display: inline-block; /* Para o fundo cobrir apenas o texto */
+/* 2. Classe para textos com fundo branco */
+.texto-com-fundo {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 3px 8px;
+    border-radius: 5px;
+    display: inline; /* Usar inline para textos dentro de parágrafos */
+    box-decoration-break: clone; /* Garante que o fundo se aplique corretamente em quebras de linha */
+    -webkit-box-decoration-break: clone;
 }
 
-/* Ajuste específico para o ícone de data para ter o fundo branco */
-.info-item .icone.texto-fundo-branco {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px; /* Mais padding para o ícone */
-    border-radius: 8px;
+h1.texto-com-fundo {
+    display: inline-block; /* h1 precisa de inline-block */
 }
-
 
 .detalhes {
     margin-bottom: 25px;
@@ -109,10 +108,6 @@ main .mensagem {
     justify-content: center;
     gap: 10px;
     margin-bottom: 10px;
-}
-
-.info-item .icone {
-    font-size: 1.5em;
 }
 
 .info-item p {
@@ -145,14 +140,26 @@ main .mensagem {
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
+/* Botão de Confirmação */
+.botao-confirmar {
+    display: inline-block;
+    background-color: var(--cor-destaque);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
 /* Contador Regressivo */
 .contador-regressivo {
     background-color: #f8f9fa;
     padding: 15px;
     border-radius: 10px;
-    /* Deslocado para o final da página */
-    margin-top: 30px; /* Adiciona margem superior para afastá-lo dos outros elementos */
-    margin-bottom: 0; /* Garante que não há margem inferior desnecessária */
+    /* 3. Aumentado o espaço acima */
+    margin-top: 40px;
 }
 
 .contador-regressivo h3 {
@@ -183,25 +190,6 @@ main .mensagem {
     color: #6c757d;
 }
 
-/* Botão de Confirmação */
-.botao-confirmar {
-    display: inline-block;
-    background-color: var(--cor-destaque);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-size: 1.2em;
-    font-weight: 700;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-    margin-top: 25px; /* Adiciona margem para separá-lo do contador */
-}
-
-.botao-confirmar:hover {
-    transform: scale(1.05);
-    background-color: #e76f51;
-}
-
 footer {
     margin-top: 20px;
     font-weight: 600;
@@ -227,4 +215,4 @@ footer {
         transform: translateY(120vh) rotate(720deg);
         opacity: 0;
     }
-    }
+}
