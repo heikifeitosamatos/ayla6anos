@@ -1,70 +1,69 @@
-function simular() {
-  const v0 = parseFloat(document.getElementById("velocidade").value);
-  const ang = parseFloat(document.getElementById("angulo").value) * Math.PI / 180;
-  const g = parseFloat(document.getElementById("gravidade").value);
+document.addEventListener('DOMContentLoaded', () => {
 
-  const v0x = v0 * Math.cos(ang);
-  const v0y = v0 * Math.sin(ang);
+    // --- LÓGICA DO CONTADOR REGRESSIVO ---
+    const dataAlvo = new Date('2025-10-04T19:30:00');
 
-  const tempoSubida = v0y / g;
-  const alturaMax = (v0y ** 2) / (2 * g);
-  const tempoTotal = 2 * tempoSubida;
-  const alcance = v0x * tempoTotal;
+    const diasEl = document.getElementById('dias');
+    const horasEl = document.getElementById('horas');
+    const minutosEl = document.getElementById('minutos');
+    const segundosEl = document.getElementById('segundos');
 
-  document.getElementById("resultados").innerHTML = `
-    <h3>Resultados:</h3>
-    <p>Tempo de subida: ${tempoSubida.toFixed(2)} s</p>
-    <p>Tempo total de voo: ${tempoTotal.toFixed(2)} s</p>
-    <p>Altura máxima: ${alturaMax.toFixed(2)} m</p>
-    <p>Alcance horizontal: ${alcance.toFixed(2)} m</p>
-  `;
+    function atualizarContador() {
+        const agora = new Date();
+        const diferencaTotal = dataAlvo - agora;
 
-  animarTrajetoria(v0x, v0y, g, tempoTotal);
-}
+        if (diferencaTotal <= 0) {
+            document.getElementById('countdown').innerHTML = "<h2>A festa já começou!</h2>";
+            clearInterval(intervalo);
+            return;
+        }
 
-function animarTrajetoria(vx, vy, g, tTotal) {
-  const canvas = document.getElementById("grafico");
-  const ctx = canvas.getContext("2d");
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  const escalaX = canvas.width / (vx * tTotal);
-  const escalaY = canvas.height / ((vy ** 2) / (2 * g));
-
-  let t = 0;
-  const dt = 0.02;
-
-  function desenharFrame() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Trajetória
-    ctx.beginPath();
-    ctx.moveTo(0, canvas.height);
-    for (let temp = 0; temp <= tTotal; temp += 0.05) {
-      const x = vx * temp;
-      const y = vy * temp - 0.5 * g * temp * temp;
-      const px = x * escalaX;
-      const py = canvas.height - y * escalaY;
-      ctx.lineTo(px, py);
+        const dias = Math.floor(diferencaTotal / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencaTotal % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferencaTotal % (1000 * 60 * 60)) / (1000 * 60));
+        const segundos = Math.floor((diferencaTotal % (1000 * 60)) / 1000);
+        
+        diasEl.innerText = formatarTempo(dias);
+        horasEl.innerText = formatarTempo(horas);
+        minutosEl.innerText = formatarTempo(minutos);
+        segundosEl.innerText = formatarTempo(segundos);
     }
-    ctx.strokeStyle = "#ccc";
-    ctx.stroke();
 
-    // Projétil
-    const x = vx * t;
-    const y = vy * t - 0.5 * g * t * t;
-    const px = x * escalaX;
-    const py = canvas.height - y * escalaY;
-
-    ctx.beginPath();
-    ctx.arc(px, py, 8, 0, 2 * Math.PI);
-    ctx.fillStyle = "#ff0000";
-    ctx.fill();
-
-    t += dt;
-    if (t <= tTotal) {
-      requestAnimationFrame(desenharFrame);
+    function formatarTempo(tempo) {
+        return tempo < 10 ? `0${tempo}` : tempo;
     }
-  }
 
-  desenharFrame();
-}
+    const intervalo = setInterval(atualizarContador, 1000);
+    atualizarContador();
+
+
+    // --- LÓGICA DO EFEITO DE CONFETE ---
+    function criarConfetes() {
+        const cores = ['#2a9d8f', '#e9c46a', '#f4a261', '#e76f51', '#264653'];
+        const quantidadeConfetes = 50;
+
+        for (let i = 0; i < quantidadeConfetes; i++) {
+            const confete = document.createElement('div');
+            confete.classList.add('confete');
+            
+            confete.style.left = `${Math.random() * 100}vw`;
+            confete.style.backgroundColor = cores[Math.floor(Math.random() * cores.length)];
+            confete.style.animationDelay = `${Math.random() * 3}s`;
+            confete.style.animationDuration = `${2 + Math.random() * 3}s`;
+            
+            // Adiciona variações no tamanho
+            const tamanho = `${5 + Math.random() * 10}px`;
+            confete.style.width = tamanho;
+            confete.style.height = tamanho;
+            
+            document.body.appendChild(confete);
+
+            // Remove o confete do DOM após a animação
+            setTimeout(() => {
+                confete.remove();
+            }, 6000);
+        }
+    }
+
+    criarConfetes();
+});
