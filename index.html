@@ -1,29 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Simulador de Movimento Oblíquo</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite de Aniversário!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Simulador de Movimento Oblíquo</h1>
-  <div class="container">
-    <label>Velocidade Inicial (m/s):</label>
-    <input type="number" id="velocidade" step="0.1" />
+    <div class="card-convite">
+        <header>
+            <h1>Você está super convidado!</h1>
+            <h2>Para a festa de aniversário do</h2>
+            <div class="aniversariante">
+                <span>[Nome da Criança]</span>
+            </div>
+        </header>
 
-    <label>Ângulo de Lançamento (°):</label>
-    <input type="number" id="angulo" step="0.1" />
+        <main>
+            <p class="idade">Vamos comemorar meus <strong>6 aninhos!</strong></p>
+            <p class="mensagem">Sua presença é o meu maior presente. Vai ser uma tarde de muita diversão, brincadeiras e bolo!</p>
 
-    <label>Gravidade (m/s²):</label>
-    <input type="number" id="gravidade" value="9.8" step="0.1" />
+            <div class="detalhes">
+                <div class="info-item">
+                    <span class="icone">📅</span>
+                    <p><strong>Data:</strong> 04 de Outubro de 2025 (Sábado)</p>
+                </div>
+                <div class="info-item">
+                    <span class="icone">⏰</span>
+                    <p><strong>Horário:</strong> 19:30</p>
+                </div>
+                <div class="info-item">
+                    <span class="icone">📍</span>
+                    <p><strong>Local:</strong> Rua Sergipe, 997 B, Mercadinho</p>
+                </div>
+            </div>
 
-    <button onclick="simular()">Simular</button>
+            <div class="contador-regressivo">
+                <h3>Faltam para a festa:</h3>
+                <div id="countdown">
+                    <div class="tempo">
+                        <span id="dias">00</span>
+                        <small>Dias</small>
+                    </div>
+                    <div class="tempo">
+                        <span id="horas">00</span>
+                        <small>Horas</small>
+                    </div>
+                    <div class="tempo">
+                        <span id="minutos">00</span>
+                        <small>Minutos</small>
+                    </div>
+                    <div class="tempo">
+                        <span id="segundos">00</span>
+                        <small>Segundos</small>
+                    </div>
+                </div>
+            </div>
 
-    <div id="resultados"></div>
-    <canvas id="grafico" width="600" height="400"></canvas>
-  </div>
+            <a href="https://wa.me/5599000000000?text=Olá!%20Confirmo%20minha%20presença%20no%20aniversário%20de%20[Nome%20da%20Criança]!" class="botao-confirmar" target="_blank">
+                Confirmar Presença
+            </a>
+        </main>
+        
+        <footer>
+            <p>Espero por você!</p>
+        </footer>
+    </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
